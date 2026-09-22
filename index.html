@@ -85,16 +85,16 @@
             </div>
         </section>
 
-        <!-- CLEANING PROCESS REELS SHOWCASE (Auto-fetched via Microlink API like Notes App) -->
+        <!-- CLEANING PROCESS REELS SHOWCASE -->
         <section class="bg-white rounded-3xl p-6 md:p-8 border border-gray-200 shadow-sm space-y-6">
             <div class="text-center max-w-2xl mx-auto space-y-2">
                 <span class="text-xs font-bold text-orange-600 uppercase tracking-widest">लाइव एक्शन & परिणाम</span>
                 <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900">क्लीनिंग प्रोसेस रील्स</h2>
-                <p class="text-gray-600 text-xs">नोट्स ऐप की तरह लाइव ऑटो-फेच थंबनेल (Microlink API)</p>
+                <p class="text-gray-600 text-xs">क्लिक करें और सीधे फेसबुक पर रील देखें</p>
             </div>
 
             <div id="reels-container" class="grid grid-cols-2 sm:grid-cols-5 gap-3">
-                <!-- JS will inject 10 cards here automatically -->
+                <!-- JS will inject clean crystal clear cards here -->
             </div>
         </section>
 
@@ -184,7 +184,7 @@
         </div>
     </footer>
 
-    <!-- Interactive JS + Notes-like Auto-Fetch Engine -->
+    <!-- Interactive JS + Clean Crystal-Clear Thumbnail Grid -->
     <script>
         const facebookReels = [
             "https://www.facebook.com/share/r/1ByXVZG7RV/",
@@ -204,31 +204,35 @@
             container.innerHTML = '';
 
             facebookReels.forEach((url, index) => {
-                // Skeleton/Placeholder Card first
                 const card = document.createElement('a');
                 card.href = url;
                 card.target = '_blank';
-                card.id = `reel-card-${index}`;
-                card.className = "group aspect-[9/16] bg-gradient-to-br from-orange-600 to-gray-900 rounded-2xl overflow-hidden border border-gray-200 relative block shadow-sm hover:shadow-lg transition";
+                card.className = "group aspect-[9/16] bg-gray-900 rounded-2xl overflow-hidden border border-gray-200 relative block shadow-sm hover:shadow-xl transition";
                 card.innerHTML = `
-                    <img id="img-${index}" src="" alt="Reel ${index+1}" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition duration-300 hidden">
-                    <div id="overlay-${index}" class="absolute inset-0 bg-black/40 group-hover:bg-black/25 transition"></div>
-                    <div class="absolute inset-0 flex flex-col items-center justify-center p-2 text-center">
-                        <div class="w-11 h-11 rounded-full bg-orange-600 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition mb-2">▶</div>
-                        <span class="text-white text-xs font-extrabold drop-shadow">रील #${index+1} देखें</span>
+                    <div id="fallback-${index}" class="w-full h-full bg-gradient-to-br from-orange-600 to-gray-800 flex items-center justify-center">
+                        <span class="text-white text-xs font-bold">लोड हो रहा है...</span>
+                    </div>
+                    <img id="img-${index}" src="" alt="Reel ${index+1}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 hidden">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex flex-col justify-end p-2.5">
+                        <div class="flex items-center justify-between">
+                            <div class="w-9 h-9 rounded-full bg-orange-600 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition text-xs">▶</div>
+                            <span class="text-white text-[10px] font-extrabold bg-black/50 px-2 py-0.5 rounded-full backdrop-blur-sm">रील #${index+1}</span>
+                        </div>
                     </div>
                 `;
                 container.appendChild(card);
 
-                // Fetch OG metadata via Microlink (similar to notes app scraping)
+                // Fetch OG metadata via Microlink
                 fetch(`https://api.microlink.io/?url=${encodeURIComponent(url)}`)
                     .then(res => res.json())
                     .then(data => {
                         if (data && data.data && data.data.image && data.data.image.url) {
                             const imgEl = document.getElementById(`img-${index}`);
-                            if (imgEl) {
+                            const fallbackEl = document.getElementById(`fallback-${index}`);
+                            if (imgEl && fallbackEl) {
                                 imgEl.src = data.data.image.url;
                                 imgEl.classList.remove('hidden');
+                                fallbackEl.style.display = 'none';
                             }
                         }
                     })
@@ -236,7 +240,6 @@
             });
         }
 
-        // Run fetch on load
         fetchReelsPreviews();
 
         function switchStorageType(type) {
