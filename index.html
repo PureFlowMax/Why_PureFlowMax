@@ -6,7 +6,7 @@
     <title>PureFlowMax | वॉटर टैंक क्लीनिंग डैशबोर्ड & प्रो कैलकुलेटर</title>
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/PureFlowMax/Why_PureFlowMax/refs/heads/main/logo_orange.png">
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/PureFlowMax/Why_PureFlowMax/refs/heads/main/logo-orange.png">
     
     <!-- Android / Mobile App Support Meta -->
     <meta name="mobile-web-app-capable" content="yes">
@@ -19,12 +19,22 @@
     <style>
         body { font-family: 'Inter', 'Noto Sans Devnagari', 'Noto Sans Devanagari', sans-serif; }
         @media print {
-            body { background-color: #ffffff !important; -webkit-print-color-adjust: exact; font-size: 10px !important; color: #111 !important; }
+            body { background-color: #ffffff !important; -webkit-print-color-adjust: exact; font-size: 8.5px !important; color: #111 !important; line-height: 1.25 !important; }
             .no-print { display: none !important; }
-            main { max-width: 100% !important; padding: 0 !important; gap: 6px !important; }
-            section { border: 1.5px solid #ccc !important; padding: 8px !important; border-radius: 12px !important; box-shadow: none !important; margin-bottom: 8px !important; page-break-inside: avoid; }
-            table th, table td { padding: 4px 6px !important; font-size: 9px !important; }
-            @page { size: A4 portrait; margin: 6mm; }
+            main { max-width: 100% !important; padding: 2px !important; margin: 0 !important; space-y: 4px !important; }
+            main > * { margin-bottom: 6px !important; }
+            section { border: 1px solid #bbb !important; padding: 6px !important; border-radius: 8px !important; box-shadow: none !important; margin-bottom: 6px !important; break-inside: avoid !important; page-break-inside: avoid !important; background: #fff !important; }
+            h1 { font-size: 14px !important; }
+            h2 { font-size: 11px !important; margin-bottom: 4px !important; }
+            h3 { font-size: 9.5px !important; }
+            p, li, td, th, span, div { font-size: 8px !important; }
+            .grid { display: block !important; }
+            .grid > div { margin-bottom: 4px !important; width: 100% !important; break-inside: avoid !important; page-break-inside: avoid !important; }
+            table th, table td { padding: 2px 4px !important; font-size: 7.5px !important; }
+            header img { max-height: 60px !important; width: auto !important; object-fit: contain; }
+            #reels-container { display: grid !important; grid-template-columns: repeat(5, 1fr) !important; gap: 3px !important; }
+            #reels-container > a { aspect-ratio: 9/16 !important; height: 75px !important; break-inside: avoid !important; }
+            @page { size: A4 portrait; margin: 4mm; }
         }
     </style>
     <meta property="og:title" content="PureFlowMax | Kota's 1st Zero Human Entry Tank Cleaning + Calculator">
@@ -49,7 +59,7 @@
                 <span>•</span>
                 <a href="https://www.instagram.com/pureflowmax?stkn=Mzl2djE1NjNxZDZp" target="_blank" class="hover:text-white transition">Instagram</a>
                 <span>•</span>
-                <button onclick="window.print()" class="text-orange-300 font-bold hover:text-white transition underline cursor-pointer flex items-center gap-1">📄 PDF (Single Page)</button>
+                <button onclick="window.print()" class="text-orange-300 font-bold hover:text-white transition underline cursor-pointer flex items-center gap-1">📄 PDF (Compact)</button>
             </div>
         </div>
     </div>
@@ -62,7 +72,6 @@
                  class="w-full h-auto block pointer-events-none select-none"
                  onerror="this.style.display='none'; document.getElementById('native-fallback').style.display='block';">
             
-            <!-- Fallback Text Header if image fails to load -->
             <div id="native-fallback" style="display:none;" class="py-8 px-4 text-white text-center space-y-4">
                 <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight">PureFlowMax</h1>
                 <p class="text-xs sm:text-sm font-bold text-orange-100 tracking-wider uppercase">KOTA'S FIRST 6 STEP ADVANCED WATER TANK CLEANING SERVICE, ZERO HUMAN ENTRY</p>
@@ -374,9 +383,9 @@
                 <span class="font-extrabold text-gray-900 text-sm">PureFlowMax</span>
             </div>
             <div class="flex flex-wrap items-center justify-center gap-5 font-semibold text-gray-600">
-                <a href="https://www.facebook.com/share/18PL8XAXeW/" class="hover:text-orange-600 transition">Facebook Page</a>
-                <a href="https://www.instagram.com/pureflowmax?stkn=Mzl2djE1NjNxZDZp" class="hover:text-orange-600 transition">Instagram</a>
-                <a href="tel:+917976820321" class="hover:text-orange-600 transition">+91 7976820321</a>
+                <a href="https://www.facebook.com/share/18PL8XAXeW/" target="_blank" class="hover:text-orange-600 transition">Facebook Page</a>
+                <a href="https://www.instagram.com/pureflowmax?stkn=Mzl2djE1NjNxZDZp" target="_blank" class="hover:text-orange-600 transition">Instagram</a>
+                <a href="tel:+917976820321" target="_blank" class="hover:text-orange-600 transition">+91 7976820321</a>
             </div>
             <div>
                 © 2026 PureFlowMax • वैज्ञानिक स्वच्छता
@@ -384,7 +393,7 @@
         </div>
     </footer>
 
-    <!-- Interactive JS + All Features Restored -->
+    <!-- Interactive JS -->
     <script>
         const facebookReels = [
             "https://www.facebook.com/share/r/1ByXVZG7RV/",
